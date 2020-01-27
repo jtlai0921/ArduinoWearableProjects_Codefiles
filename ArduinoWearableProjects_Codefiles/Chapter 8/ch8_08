@@ -1,0 +1,56 @@
+//Declare all the digital pins into an array 
+int leds[]={0,1,2,3,4}; 
+
+//Declare the function 
+int runPattern(String command);
+
+//The led pattern 
+void runLed(){
+//Run the forward/backward patter 5 times 
+for(int t=0; t<5;t++){
+for(int j=0; j<4; j++){
+digitalWrite(leds[j],HIGH);
+delay(200);
+digitalWrite(leds[j],LOW);
+delay(200);
+}
+for(int k=2; k>=0; k--){
+ digitalWrite(leds[k],HIGH);
+ delay(200);
+  digitalWrite(leds[k],LOW);
+ delay(200);
+}  
+    }    
+}
+
+void setup()
+{
+  // register the Particle function
+  Spark.function("flahsLeds", runPattern);
+  //Set all pins as outputs 
+  for(int i=0; i<4; i++){
+   pinMode(leds[i],OUTPUT);   
+  }
+//Run the patter once just to test 
+runLed();
+}
+
+
+void loop()
+{
+//Do nothing in here 
+}
+
+int runPattern(String command)
+{
+  //Look for the command “ledsOn”  
+  if(command == "ledsOn")
+  {
+//Activate the led pattern 
+ runLed();
+ //Returns 1 if everything went ok
+    return 1;
+}
+ //Returns -1 if something went wrong 
+  else return -1;
+} 

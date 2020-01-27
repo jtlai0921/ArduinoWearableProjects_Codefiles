@@ -1,0 +1,14 @@
+int potVal = 0;
+
+void setup()
+{
+  /* The variable function takes three parameters. The first is the name of your variable. The name can be no longer then 12 characters. The second one is your actual variable for the data you want to monitor and the last parameter is the data type */
+  Particle.variable("Pot value", &potVal, INT);
+  pinMode(A0, INPUT);
+}
+
+void loop()
+{
+  potVal = analogRead(A0);
+  delay(200);
+}

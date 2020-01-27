@@ -1,0 +1,25 @@
+int led = D7;
+
+void setup() {
+pinMode(led,OUTPUT);    
+Particle.subscribe("tonyC_data_stream", doFunction);
+}
+
+void loop() {
+//Do nothing 
+       
+}
+
+void doFunction(const char *event, const char *data)
+{
+
+    //Compares the incoming data to the string “ON” 
+  if (strcmp(data,"ON")==0) {
+digitalWrite(led,LOW);
+  }
+    //Compares the incoming data to the string “OFF” 
+  else if (strcmp(data,"OFF")==0) {
+digitalWrite(led,HIGH);
+  }
+
+}

@@ -1,0 +1,17 @@
+    void setup() {
+  //No need to do anything 
+}
+
+
+
+void loop() {
+	     //Publish the data	
+        Particle.publish("MyMessage","Hello",60,PUBLIC);
+	     //Wait for a bit 	
+        delay(1000);
+	     //Publish the data
+        Particle.publish("MyMessage","Goodby",60, PUBLIC);
+	     // Wait for a bit
+        delay(1000);
+       
+}

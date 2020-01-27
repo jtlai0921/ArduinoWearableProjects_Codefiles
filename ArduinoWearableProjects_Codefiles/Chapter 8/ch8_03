@@ -1,0 +1,13 @@
+void setup() {
+//Do nothing 
+}
+
+void loop() {
+
+Particle.publish("tonyC_data_stream","ON");
+delay(2000);
+Particle.publish("tonyC_data_stream","OFF");
+delay(2000);
+       
+}
+

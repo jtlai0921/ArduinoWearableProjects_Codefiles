@@ -1,0 +1,27 @@
+int led = D7; 
+
+void setup() {
+    pinMode(led,OUTPUT); 
+    //Declare the function “led” and trigger the “ledOnOff” function
+    Particle.function("led",ledOnOff);
+    
+}
+
+void loop() {
+
+}
+
+int ledOnOff(String inData) {
+//Check the incoming data a responded accordingly 	
+    if (inData =="on") {
+        digitalWrite(led,HIGH);
+        return 1;
+    }
+    else if (inData =="off") {
+        digitalWrite(led,LOW);
+        return 0;
+    }
+    else {
+        return -1;
+    }
+}
